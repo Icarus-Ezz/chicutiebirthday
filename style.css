@@ -1,0 +1,249 @@
+/* --- Cài đặt Chung --- */
+@keyframes sparkle {
+    0%, 100% { color: #ff007f; text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f; }
+    50% { color: #ffeb3b; text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b; }
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fce4ec; /* Màu hồng nhạt */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    overflow: hidden; /* Giấu thanh cuộn ngang/dọc */
+}
+/* --- Trang 4: Style cho ảnh của người nhận (Chi) --- */
+.recipient-image-area {
+    margin-bottom: 20px;
+    /* Hiệu ứng nổi bật, có thể bỏ nếu không thích */
+    animation: bounce 2s infinite alternate; 
+}
+
+.recipient-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Ảnh tròn */
+    border: 6px solid #ffeb3b; /* Viền vàng sinh nhật */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+/* --- Chuyển Trang --- */
+.page {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+/* --- Trang 1: Giới Thiệu --- */
+.intro-content {
+    display: flex;
+    max-width: 900px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.text-area {
+    flex: 2;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.image-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-area img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; /* Ảnh tròn */
+    object-fit: cover;
+    border: 5px solid #ff7f99;
+}
+
+/* --- Trang 2: Lời Chúc --- */
+.message-card {
+    max-width: 600px;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.typing-text-container {
+    min-height: 150px;
+    margin-bottom: 20px;
+    border-left: 3px solid #ff7f99;
+    padding-left: 15px;
+}
+
+/* --- Trang 3: Minigame --- */
+.game-area {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+}
+
+#mole-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.hole {
+    height: 100px;
+    background-color: #a8795c; /* Màu đất */
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 5px solid #7c5c49;
+}
+
+/* --- CSS mới cho hình ảnh ếch trong Minigame --- */
+.mole-image {
+    position: absolute;
+    width: 100%; /* Chiếm toàn bộ chiều rộng của lỗ */
+    height: auto; /* Giữ tỷ lệ ảnh */
+    bottom: -100%; /* Ban đầu ẩn ếch bên dưới lỗ */
+    left: 0;
+    transition: bottom 0.2s ease-out, transform 0.1s ease-out; /* Thêm transition cho hiệu ứng đập */
+    pointer-events: none; /* Đảm bảo click vào lỗ chứ không phải ảnh */
+    transform: translateY(20%); /* Đẩy ếch lên một chút để trông tự nhiên hơn khi ẩn */
+}
+
+/* Khi lỗ có class 'up', ếch sẽ hiện lên */
+.hole.up .mole-image {
+    bottom: 0;
+    transform: translateY(0);
+}
+/* --- Trang 4: Style cho Gallery Ảnh của người nhận --- */
+.photo-gallery {
+    display: flex; /* Dùng Flexbox để các ảnh nằm ngang */
+    justify-content: center; /* Căn giữa các ảnh */
+    gap: 15px; /* Khoảng cách giữa các ảnh */
+    margin: 20px 0 30px 0; /* Khoảng cách trên, dưới */
+    flex-wrap: wrap; /* Cho phép các ảnh xuống dòng nếu không đủ chỗ */
+    max-width: 90%; /* Giới hạn chiều rộng của gallery */
+}
+
+.gallery-photo {
+    width: 120px; /* Chiều rộng của mỗi ảnh */
+    height: 120px; /* Chiều cao của mỗi ảnh */
+    object-fit: cover; /* Đảm bảo ảnh được cắt để vừa khung mà không bị méo */
+    border-radius: 8px; /* Bo góc nhẹ cho ảnh hình chữ nhật/vuông */
+    border: 4px solid #ffeb3b; /* Viền vàng sinh nhật */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out; /* Hiệu ứng hover */
+}
+
+.gallery-photo:hover {
+    transform: scale(1.05); /* Phóng to nhẹ khi rê chuột vào */
+}
+/* Hiệu ứng khi đập ếch */
+.hole.whacked .mole-image {
+    transform: scale(0.9) translateY(10%); /* Éch bị xẹp xuống một chút */
+    opacity: 0; /* Có thể làm mờ đi */
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+
+/* --- Trang 4: Quà Tặng --- */
+#page4 {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); /* Nền gradient lãng mạn */
+}
+
+.gift-box {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+    margin: 30px;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.gift-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 20px;
+    background-color: #e91e63;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.gift-button:hover {
+    background-color: #d81b60;
+}
+
+/* Chữ nhấp nháy bay lên */
+.sparkle-text {
+    font-size: 3em;
+    font-weight: bold;
+    animation: sparkle 1.5s infinite;
+}
+
+/* --- Nút Chung --- */
+.next-button {
+    padding: 12px 25px;
+    margin-top: 15px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #ff7f99;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.next-button:hover:not(:disabled) {
+    background-color: #ff4d6b;
+}
+
+.next-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
