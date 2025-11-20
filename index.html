@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birth Day Chi!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container"> 
+        <div id="page1" class="page active">
+            <div class="intro-content">
+                <div class="text-area">
+                    <h1>Mr.Phát</h1>
+
+                    <p>Hello Chi.</p>
+
+                    <p>Hôm nay, Phát đã chuẩn bị một món quà nho nhỏ, xinh xinh và đầy tình cảm dành riêng cho Chi. 
+                    Bên trong là một số thứ dễ thương với rất nhiều bất ngờ dành cho ngày đặc biệt mong Chi sẽ thích. 🎁</p>
+
+                    <button class="next-button" onclick="nextPage(2)">Bắt đầu Khám Phá</button>
+                </div>
+
+                <div class="image-area">
+                    <img src="https://image2url.com/images/1763657886037-19a26513-8e97-45a1-879c-a5d662faa70e.png" alt="Ảnh Giới Thiệu">
+                </div>
+            </div>
+        </div>
+        <div id="page2" class="page">
+            <div class="message-card">
+                <h2>💌 Lời Chúc Của Phát</h2>
+                <div class="typing-text-container">
+                    <p id="wish-text"></p>
+                </div>
+                <button class="next-button" id="next-to-game" disabled>Chơi Game Nhận Quà</button>
+            </div>
+        </div>
+        
+        <div id="page3" class="page">
+            <div class="game-area">
+                <h2>🐸 Minigame: Đập Ếch! 🐸</h2>
+                <p>Hãy đập càng nhiều ếch càng tốt trong **30 giây**! (Cần 5 điểm để thắng)</p>
+                <p class="stats">Điểm: <span id="score">0</span> | Thời gian: <span id="timer">30</span>s</p>
+                <div id="mole-grid">
+                    <div class="hole" data-index="0" onclick="whack(0)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image"> 
+                    </div>
+                    <div class="hole" data-index="1" onclick="whack(1)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                    <div class="hole" data-index="2" onclick="whack(2)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                    <div class="hole" data-index="3" onclick="whack(3)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                    <div class="hole" data-index="4" onclick="whack(4)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                    <div class="hole" data-index="5" onclick="whack(5)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                    <div class="hole" data-index="6" onclick="whack(6)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                    <div class="hole" data-index="7" onclick="whack(7)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                    <div class="hole" data-index="8" onclick="whack(8)">
+                        <img src="https://image2url.com/images/1763654336914-e8c2d1b9-21dc-40c9-921e-22d2717081d3.png" alt="Con ếch" class="mole-image">
+                    </div>
+                </div>
+                <button class="next-button start-game-button" onclick="startMiniGame()">Bắt đầu Game!</button>
+            </div>
+        </div>
+        
+        <div id="page4" class="page">
+            <h1 class="sparkle-text">🎁 Chúc Mừng Sinh Nhật! 🎁</h1>
+            <h2 id="result-message"></h2> 
+            
+            <div class="photo-gallery">
+                <img src="https://image2url.com/images/1763657846115-e5f13c0c-d686-436a-aa30-67ab0a31bff6.png" alt="Ảnh Chi 1" class="gallery-photo">
+                <img src="https://image2url.com/images/1763657818672-237b6263-1ef1-4041-bf24-b26b6384d28f.png" alt="Ảnh Chi 2" class="gallery-photo">
+                <img src="https://image2url.com/images/1763657865835-055ab2ad-b429-4969-9936-fdcceed196b7.png" alt="Ảnh Chi 3" class="gallery-photo">
+                </div>
+
+            <div class="gift-box">
+                <p>Món quà nhỏ bé Phát dành cho bạn:</p>
+                <a id="gift-link" href="https://gift.shopmygiftcards.com/giftcards/preview/key_ff18647e-aa87-41af-9383-44078a1b2ada" target="_blank" class="gift-button">NHẬN QUÀ BÍ MẬT TẠI ĐÂY!</a>
+            </div>
+
+            <div class="happy-bday-ui"> 
+                <p class="happy-bday-text">✨ HAPPY BIRTHDAY ✨</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
